@@ -1,4 +1,5 @@
 ﻿using car_park.Common;
+using car_park.Data.Model;
 using car_park.DTO;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,10 @@ namespace car_park.API.Controllers
     {
         public ApiResult<List<ColorDTO>> Get()
         {
-            var Entities = Context.Color
+            var Entities = context.Color
+                .AsEnumerable()
                 .Where(c => c.Status != (int)Enumaration.Status.Deleted)
-                .Select(c => Mapper.Map<ColorDTO>(c))
+                .Select(c => mapper.Map<ColorDTO>(c))
                 .ToList();
 
             return new ApiResult<List<ColorDTO>>
@@ -26,18 +28,5 @@ namespace car_park.API.Controllers
 
         }
 
-        //public ApiResult<List<Data.Model.Color>> Get()
-        //{
-        //    var Entities = Context.Color
-        //        .Where(c => c.Status != (int)Enumaration.Status.Deleted)
-        //        .ToList();
-
-        //    return new ApiResult<List<Data.Model.Color>>
-        //    {
-        //        StatusCode = 200,
-        //        Data = Entities
-        //    };
-
-        //}
     }
 }

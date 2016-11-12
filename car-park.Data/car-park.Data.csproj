@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Context\CarParkDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Car.cs" />
     <Compile Include="Model\Color.cs" />

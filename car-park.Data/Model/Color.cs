@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace car_park.Data.Model
 {
-    public class Color
+    public class Color : BaseModel
     {
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
 
         [Required, StringLength(50)]
         public string Name { get; set; }
-
-        [Required]
-        public int Status { get; set; }
+        
 
         public virtual List<Car> Car { get; set; }
     }

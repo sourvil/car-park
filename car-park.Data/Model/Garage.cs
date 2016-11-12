@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace car_park.Data.Model
 {
-    public class Garage
+    public class Garage : BaseModel
     {
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-
         [Required]
         public string Name { get; set; }
 
@@ -29,5 +26,6 @@ namespace car_park.Data.Model
         public int MaxCar { get; set; }
 
         public virtual List<Car> Car { get; set; }
+        
     }
 }

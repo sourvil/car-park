@@ -1,4 +1,5 @@
-﻿using System;
+﻿using car_park.API.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -16,7 +17,7 @@ namespace car_park.API
 
             config.Routes.MapHttpRoute(
                 name: "ActionApi",
-                routeTemplate: "api/{controller}/{action}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
@@ -25,6 +26,9 @@ namespace car_park.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // AutoMapper Configuration
+            AutoMapperConfig amc = new App_Start.AutoMapperConfig();
 
             // Json instead of Xml
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ApiResult.cs" />
     <Compile Include="Enumaration.cs" />
+    <Compile Include="IApi.cs" />
     <Compile Include="IApiResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

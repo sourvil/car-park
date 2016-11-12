@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace car_park.Data.Model
 {
-    public class Car
+    public class Car : BaseModel
     {
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -41,9 +39,6 @@ namespace car_park.Data.Model
         public DateTime RegistrationDate { get; set; }
 
         public int? Price { get; set; }
-
-        [Required]
-        public int Status { get; set; }
         
         public virtual Brand Brand { get; set; }
         
