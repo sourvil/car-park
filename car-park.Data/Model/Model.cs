@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace car_park.Data.Model
 {
-    class Model
+    public class Model
     {
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ModelID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         public int BrandID { get; set; }

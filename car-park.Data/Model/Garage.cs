@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace car_park.Data.Model
 {
-    class Garage
+    public class Garage
     {
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int GarageID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -19,10 +19,15 @@ namespace car_park.Data.Model
         [Required]
         public string Address { get; set; }
 
-        [Required,Phone]
+        [Phone]
         public string PhoneNumber { get; set; }
 
-        [Required, EmailAddress]
+        [EmailAddress]
         public string Email { get; set; }
+
+        [Required]
+        public int MaxCar { get; set; }
+
+        public virtual List<Car> Car { get; set; }
     }
 }

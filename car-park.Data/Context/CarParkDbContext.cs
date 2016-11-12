@@ -12,7 +12,7 @@ using car_park.Data.Model;
 
 namespace car_park.Data.Context
 {
-    class CarGarageDbContext : DbContext
+    public class CarParkDbContext : DbContext
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -22,9 +22,9 @@ namespace car_park.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        public CarGarageDbContext()
+        public CarParkDbContext()
         {
-            Database.Connection.ConnectionString = "server=.;database=CarGarage;Trusted_Connection=TRUE";
+            Database.Connection.ConnectionString = "server=.;database=CarPark;Trusted_Connection=TRUE";
             this.Configuration.LazyLoadingEnabled = true;
         }
 

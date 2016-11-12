@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\CarGarageDbContext.cs" />
+    <Compile Include="Context\CarParkDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Car.cs" />

@@ -6,14 +6,14 @@ namespace car_park.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<car_park.Data.Context.CarGarageDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<car_park.Data.Context.CarParkDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(car_park.Data.Context.CarGarageDbContext context)
+        protected override void Seed(car_park.Data.Context.CarParkDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

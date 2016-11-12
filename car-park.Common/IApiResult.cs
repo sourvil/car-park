@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace car_park.DTO
+namespace car_park.Common
 {
-    public class Class1
+    public interface IApiResult
     {
+        int StatusCode { get; set; }
+        string Message { get; set; }
     }
 }
