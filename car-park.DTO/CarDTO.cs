@@ -15,7 +15,7 @@ namespace car_park.DTO
         public int? BrandID { get; set; }
 
         public int? ModelID { get; set; }
-        [Required]
+        //[Required]
         public int? GarageID { get; set; }
 
         [Required]
@@ -37,5 +37,6 @@ namespace car_park.DTO
         public DateTime RegistrationDate { get; set; }
 
         public int? Price { get; set; }
+
     }
 }

@@ -23,11 +23,15 @@ namespace car_park.API.Controllers
 
         public BaseApiController()
         {
-            context = new CarParkDbContext();
+            if(context == null)
+                context = new CarParkDbContext();
 
-            // AutoMapper
-            var config = new MapperConfiguration(cfg => cfg.AddProfile(new AutoMapperConfig()));               
-            mapper = config.CreateMapper();
+            if (mapper == null)
+            {
+                // AutoMapper
+                var config = new MapperConfiguration(cfg => cfg.AddProfile(new AutoMapperConfig()));
+                mapper = config.CreateMapper();
+            }
         }
         
     }

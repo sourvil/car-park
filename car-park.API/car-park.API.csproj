@@ -100,9 +100,11 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\GarageController.cs" />
+    <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

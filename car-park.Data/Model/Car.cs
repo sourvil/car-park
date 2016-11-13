@@ -45,7 +45,6 @@ namespace car_park.Data.Model
         public virtual Model Model { get; set; }
         
         public virtual Color Color { get; set; }
-        [Required]
         public virtual Garage Garage { get; set; }
 
     }

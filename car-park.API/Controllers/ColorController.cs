@@ -22,7 +22,7 @@ namespace car_park.API.Controllers
 
             return new ApiResult<List<ColorDTO>>
             {
-                StatusCode = 200,
+                StatusCode = (int)HttpStatusCode.OK,
                 Data = Entities
             };
 

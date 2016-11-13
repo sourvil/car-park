@@ -3,6 +3,7 @@ using car_park.Data.Model;
 using car_park.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,7 +25,7 @@ namespace car_park.API.Controllers
 
             return new ApiResult<List<CarDTO>>
             {
-                StatusCode = 200,
+                StatusCode = (int)HttpStatusCode.OK,
                 Data = entities
             };
 
@@ -41,33 +42,53 @@ namespace car_park.API.Controllers
 
             return new ApiResult<CarDTO>
             {
-                StatusCode = 200,
+                StatusCode = (int)HttpStatusCode.OK,
                 Data = entity
             };
 
         }
+        
 
         [HttpPost]
-        [Route("api/car/edit")]
-        public ApiResult<CarDTO> Edit(CarDTO CarDTO)
+        public ApiResult<CarDTO> Post(CarDTO carDTO)
         {
-            var entity = mapper.Map<Car>(CarDTO);
-            // Update
-            if (CarDTO.ID > 0)
-            {
-                if (entity == null)
-                    return new ApiResult<CarDTO> { StatusCode = 404, Message = "Car Not Found" };
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            }
-            // Insert
-            else
-            {
-                context.Car.Add(entity);
-            }
+            var entity = mapper.Map<Car>(carDTO);
+            entity.Status = (int)Common.Enumaration.Status.Active;
+
+            context.Car.Add(entity);
             context.SaveChanges();
 
-            return new ApiResult<CarDTO> { StatusCode = 200, Data = mapper.Map<CarDTO>(entity) };
+            return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Inserted" };
+        }
 
+        [HttpPut]
+        public ApiResult<CarDTO> Put(CarDTO carDTO)
+        {
+            var entity = mapper.Map<Car>(carDTO);            
+            
+            entity.Status = (int)Common.Enumaration.Status.Active;
+
+            if (entity == null)
+                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotFound, Message = "Car Not Found" };
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            //context.SaveChanges();
+
+            return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Updated" };
         }
     }
 }

@@ -13,6 +13,8 @@ namespace car_park.API.App_Start
         public AutoMapperConfig()
         {
             base.CreateMap<Color, ColorDTO>().ReverseMap();
+            base.CreateMap<Brand, BrandDTO>().ReverseMap();
+            base.CreateMap<Model, ModelDTO>().ReverseMap();
             base.CreateMap<Car, CarDTO>().ReverseMap();
             base.CreateMap<Garage, GarageDTO>().ReverseMap();
         }

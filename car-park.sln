@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park", "car-park\car-park.csproj", "{85476695-CF73-4CED-BA82-4F1D6BB1CC21}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.Tests", "car-park.Tests\car-park.Tests.csproj", "{2ADB2E46-A703-4C0E-811A-A003855909F9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.Data", "car-park.Data\car-park.Data.csproj", "{F4D17053-B847-414E-92E0-3316524E0624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.DTO", "car-park.DTO\car-park.DTO.csproj", "{71CEB515-BAFD-4481-9A50-4B05C1487A91}"
@@ -15,20 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.Common", "car-park
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.API", "car-park.API\car-park.API.csproj", "{92D8454B-3F59-4AA8-86FF-DB859EFDD203}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.WEB", "car-park.WEB\car-park.WEB.csproj", "{E5DAB22A-58FE-44FB-9E96-439C5F99846D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.WEB.Tests", "car-park.WEB.Tests\car-park.WEB.Tests.csproj", "{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85476695-CF73-4CED-BA82-4F1D6BB1CC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85476695-CF73-4CED-BA82-4F1D6BB1CC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85476695-CF73-4CED-BA82-4F1D6BB1CC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85476695-CF73-4CED-BA82-4F1D6BB1CC21}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2ADB2E46-A703-4C0E-811A-A003855909F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2ADB2E46-A703-4C0E-811A-A003855909F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2ADB2E46-A703-4C0E-811A-A003855909F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2ADB2E46-A703-4C0E-811A-A003855909F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F4D17053-B847-414E-92E0-3316524E0624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4D17053-B847-414E-92E0-3316524E0624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D17053-B847-414E-92E0-3316524E0624}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +37,14 @@ Global
 		{92D8454B-3F59-4AA8-86FF-DB859EFDD203}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D8454B-3F59-4AA8-86FF-DB859EFDD203}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D8454B-3F59-4AA8-86FF-DB859EFDD203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
