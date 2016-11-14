@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.API", "car-park.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.WEB", "car-park.WEB\car-park.WEB.csproj", "{E5DAB22A-58FE-44FB-9E96-439C5F99846D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.WEB.Tests", "car-park.WEB.Tests\car-park.WEB.Tests.csproj", "{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.Contract", "car-park.Contract\car-park.Contract.csproj", "{201B5817-5554-4F20-AEA7-26DC3FB3D262}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.BUS", "car-park.BUS\car-park.BUS.csproj", "{E4822C19-1E91-4E34-8FC7-481606C7B2E5}"
@@ -45,10 +43,6 @@ Global
 		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5DAB22A-58FE-44FB-9E96-439C5F99846D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14A99E85-EB7B-421C-8FD9-96999D5CE7EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{201B5817-5554-4F20-AEA7-26DC3FB3D262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{201B5817-5554-4F20-AEA7-26DC3FB3D262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{201B5817-5554-4F20-AEA7-26DC3FB3D262}.Release|Any CPU.ActiveCfg = Release|Any CPU
