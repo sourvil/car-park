@@ -1,4 +1,5 @@
 ﻿using car_park.Common;
+using car_park.Contract;
 using car_park.Data.Model;
 using car_park.DTO;
 using System;
@@ -10,7 +11,7 @@ using System.Web.Http;
 
 namespace car_park.API.Controllers
 {
-    public class GarageController : BaseApiController
+    public class GarageController : BaseApiController, IGarage
     {
         [HttpGet]
         //[Route("api/garages")]

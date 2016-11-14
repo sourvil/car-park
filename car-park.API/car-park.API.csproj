@@ -128,6 +128,10 @@
       <Project>{d1b579ce-65e2-43b9-85f1-d284853bd04b}</Project>
       <Name>car-park.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\car-park.Contract\car-park.Contract.csproj">
+      <Project>{201b5817-5554-4f20-aea7-26dc3fb3d262}</Project>
+      <Name>car-park.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\car-park.Data\car-park.Data.csproj">
       <Project>{f4d17053-b847-414e-92e0-3316524e0624}</Project>
       <Name>car-park.Data</Name>
