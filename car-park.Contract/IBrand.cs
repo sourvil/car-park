@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace car_park.Contract
 {
-    public interface ICar : IBase
+    public interface IBrand : IBase
     {
-        ApiResult<List<CarDTO>> Get();
-        ApiResult<CarDTO> Get(int ID);
-        ApiResult<CarDTO> Post(CarDTO carDTO);
-        ApiResult<CarDTO> Put(CarDTO carDTO);
+        ApiResult<List<BrandDTO>> Get();
     }
 }

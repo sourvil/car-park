@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace car_park.Contract
 {
-    public interface IGarage
+    public interface IGarage : IBase
     {
         ApiResult<List<GarageDTO>> Get();
         ApiResult<GarageDTO> Get(int id);

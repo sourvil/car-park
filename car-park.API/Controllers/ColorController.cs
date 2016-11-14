@@ -1,6 +1,8 @@
 ﻿using car_park.Common;
+using car_park.Contract;
 using car_park.Data.Model;
 using car_park.DTO;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +16,7 @@ namespace car_park.API.Controllers
     {
         public ApiResult<List<ColorDTO>> Get()
         {
-            var Entities = context.Color
-                .AsEnumerable()
-                .Where(c => c.Status != (int)Enumaration.Status.Deleted)
-                .Select(c => mapper.Map<ColorDTO>(c))
-                .ToList();
-
-            return new ApiResult<List<ColorDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = Entities
-            };
+            return kernel.Get<IColor>().Get();
 
         }
 

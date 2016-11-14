@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{201B5817-5554-4F20-AEA7-26DC3FB3D262}</ProjectGuid>
+    <ProjectGuid>{E4822C19-1E91-4E34-8FC7-481606C7B2E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>car_park.Contract</RootNamespace>
-    <AssemblyName>car-park.Contract</AssemblyName>
+    <RootNamespace>car_park.BUS</RootNamespace>
+    <AssemblyName>car-park.BUS</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,23 +53,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBase.cs" />
-    <Compile Include="IBrand.cs" />
-    <Compile Include="ICar.cs" />
-    <Compile Include="IColor.cs" />
-    <Compile Include="IGarage.cs" />
-    <Compile Include="IModel.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="BrandService.cs" />
+    <Compile Include="CarService.cs" />
+    <Compile Include="ColorService.cs" />
+    <Compile Include="Config\AutoMapperConfig.cs" />
+    <Compile Include="GarageService.cs" />
+    <Compile Include="ModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\car-park.Common\car-park.Common.csproj">
-      <Project>{D1B579CE-65E2-43B9-85F1-D284853BD04B}</Project>
+      <Project>{d1b579ce-65e2-43b9-85f1-d284853bd04b}</Project>
       <Name>car-park.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\car-park.Contract\car-park.Contract.csproj">
+      <Project>{201b5817-5554-4f20-aea7-26dc3fb3d262}</Project>
+      <Name>car-park.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\car-park.Data\car-park.Data.csproj">
+      <Project>{f4d17053-b847-414e-92e0-3316524e0624}</Project>
+      <Name>car-park.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\car-park.DTO\car-park.DTO.csproj">
-      <Project>{71CEB515-BAFD-4481-9A50-4B05C1487A91}</Project>
+      <Project>{71ceb515-bafd-4481-9a50-4b05c1487a91}</Project>
       <Name>car-park.DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,12 +25,7 @@ namespace car_park.API
                 name: "ActionApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
-
-
-
-            // AutoMapper Configuration
-            AutoMapperConfig amc = new App_Start.AutoMapperConfig();
+            );                       
 
             // Json instead of Xml
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

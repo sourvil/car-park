@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
 using car_park.Data.Model;
 using car_park.DTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace car_park.API.App_Start
+namespace car_park.BUS.Config
 {
     public class AutoMapperConfig : Profile
     {

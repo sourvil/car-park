@@ -34,6 +34,7 @@ namespace car_park.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var result = GetWebApiResult("api/garage/" + ID, new GarageDTO());
+            
             if (result != null)
             {
                 GarageVM garageVM = mapper.Map<GarageVM>(result);
