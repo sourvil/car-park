@@ -9,6 +9,11 @@ namespace car_park.WEB.Models
 {
     public class CarVM
     {
+        public CarVM()
+        {
+            RegistrationDate = DateTime.Today;
+        }
+
         [Required]
         public int ID { get; set; }
 
@@ -35,8 +40,8 @@ namespace car_park.WEB.Models
         public int? Power { get; set; }
 
         [Required]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime RegistrationDate { get; set; }
 
         public int? Price { get; set; }

@@ -24,6 +24,8 @@ namespace car_park.DTO
         [EmailAddress]
         public string Email { get; set; }
 
+        public int CarsInStock { get; set; }
 
+        public List<CarDTO> CarsInGarage { get; set; }
     }
 }

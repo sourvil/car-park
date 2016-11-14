@@ -1,9 +1,13 @@
 ﻿@model car_park.WEB.Models.GarageVM
+@using GridMvc.Html
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+
 
 <h2>Details</h2>
 
@@ -49,10 +53,68 @@
         <dd>
             @Html.DisplayFor(model => model.MaxCar)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarsInStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarsInStock)
+        </dd>
 
     </dl>
 </div>
+
+<hr />
+<a type="button"
+   class="btn"
+   href="#article-editor"
+   data-toggle="modal">Cars in Popup Window</a>
+
+<div class="modal fade panel panel-info" id="article-editor">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h4 class="panel-title">Cars</h4>
+    </div>
+    <div class="modal-body">
+        <div class="panel-body">
+            @Html.Grid(Model.CarsInGarage).Columns(col =>
+   {
+       col.Add(x => x.Name).Titled("Name");
+       col.Add(x => x.Year).Titled("Year");
+       col.Add(x => x.RegistrationDate).Titled("RegistrationDate").Format("{0:dd/MM/yyyy}").Titled("RegistrationDate");
+       col.Add().Sanitized(false).Encoded(false).RenderValueAs(x => Menu(x));
+   }).WithPaging(5)
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+
+<hr />
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">Cars</h4>
+    </div>
+    <div class="panel-body">
+        @Html.Grid(Model.CarsInGarage).Columns(col =>
+   {       
+       col.Add(x => x.Name).Titled("Name").Filterable(true).Sortable(true);
+       col.Add(x => x.Year).Titled("Year").Filterable(true).Sortable(true);
+       col.Add(x => x.RegistrationDate).Titled("RegistrationDate").Format("{0:dd/MM/yyyy}").Titled("RegistrationDate").Filterable(true).Sortable(true);
+       col.Add().Sanitized(false).Encoded(false).RenderValueAs(x => Menu(x));
+   }).WithPaging(5)
+    </div>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.ID }) |
+    @Html.ActionLink("Edit Garage", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+@helper Menu(car_park.WEB.Models.CarVM vm)
+{
+    <a href="@Url.Action("Edit", "Car", new { ID = vm.ID })">Edit</a>   
+}
+
+

@@ -1,40 +1,32 @@
 ﻿@model IEnumerable<car_park.WEB.Models.CarVM>
+@using GridMvc.Html
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Car List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Car List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegistrationDate)
-        </th>
-        <th></th>
-    </tr>
+    @Html.ActionLink("Create New", "Edit")
+</p><div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">Cars</h4>
+    </div>
+    <div class="panel-body">
+        @Html.Grid(Model).Columns(col =>
+   {
+       col.Add(x => x.Name).Titled("Name").Filterable(true).Sortable(true);
+       col.Add(x => x.Year).Titled("Year").Filterable(true).Sortable(true);
+       col.Add(x => x.RegistrationDate).Titled("RegistrationDate").Format("{0:dd/MM/yyyy}").Titled("RegistrationDate").Filterable(true).Sortable(true);
+       col.Add().Sanitized(false).Encoded(false).RenderValueAs(x => Menu(x));
+   }).WithPaging(5)
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegistrationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.ID  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.ID  })
-        </td>
-    </tr>
+
+@helper Menu(car_park.WEB.Models.CarVM vm)
+{
+    <a href="@Url.Action("Edit", "Car", new { ID = vm.ID })">Edit</a>
 }
-
-</table>

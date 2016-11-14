@@ -24,7 +24,7 @@ namespace car_park.Data.Context
 
         public CarParkDbContext()
         {
-            Database.Connection.ConnectionString = "server=.;database=CarPark;Trusted_Connection=TRUE;MultipleActiveResultSets=true;";
+            Database.Connection.ConnectionString = Common.ConfigValue.connString;
             this.Configuration.LazyLoadingEnabled = true;
         }
 

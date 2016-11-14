@@ -22,3 +22,26 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#container .modal.fade {
+    left: -25%;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+    #container .modal.fade.in {
+        left: 50%;
+    }
+
+#container .modal-body {
+    max-height: 50px;
+}
+
+#article-editor {
+    margin: auto;
+    width: 750px;
+    height: 500px;
+    background-color: white;
+}

@@ -68,42 +68,6 @@ namespace car_park.Controllers
             return View(carVM);
         }
 
-        //private GarageDTO GetGarageList(int? garageID = 0)
-        //{
-        //    var result = GetWebApiResult("api/garage", new List<GarageDTO>());
-        //    ViewBag.GarageID = new SelectList(result as List<GarageDTO>, "ID", "Name", garageID);
-        //    if(garageID.HasValue)
-        //        return result.Where(g => g.ID == garageID).FirstOrDefault();
-        //    return new GarageDTO();
-        //}
-
-        //private ModelDTO GetModelList(int? modelID = 0)
-        //{
-        //    var result = GetWebApiResult("api/model", new List<ModelDTO>());
-        //    ViewBag.ModelID = new SelectList(result as List<ModelDTO>, "ID", "Name", modelID);
-        //    if (modelID.HasValue)
-        //        return result.Where(g => g.ID == modelID).FirstOrDefault();
-        //    return new ModelDTO();
-        //}
-
-        //private BrandDTO GetBrandList(int? brandID = 0)
-        //{
-        //    var result = GetWebApiResult("api/brand", new List<BrandDTO>());
-        //    ViewBag.BrandID = new SelectList(result as List<BrandDTO>, "ID", "Name", brandID);
-        //    if (brandID.HasValue)
-        //        return result.Where(g => g.ID == brandID).FirstOrDefault();
-        //    return new BrandDTO();
-        //}
-
-        //private ColorDTO GetColorList(int? ColorID = 0)
-        //{
-        //    var result = GetWebApiResult("api/color", new List<ColorDTO>());
-        //    ViewBag.ColorID = new SelectList(result as List<ColorDTO>, "ID", "Name",ColorID);
-        //    if (ColorID.HasValue)
-        //        return result.Where(g => g.ID == ColorID).FirstOrDefault();
-        //    return new ColorDTO();
-        //}
-
         [HttpPost]
         public ActionResult Edit(CarVM carVM)
         {
@@ -129,9 +93,12 @@ namespace car_park.Controllers
                     }
                 }
             }
+            carVM.ColorList = GetWebApiResult("api/color", new List<ColorDTO>());
+            carVM.BrandList = GetWebApiResult("api/brand", new List<BrandDTO>());
+            carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+            carVM.GarageList = GetWebApiResult("api/garage", new List<GarageDTO>());
             return View(carVM);
         }
-
         public ActionResult Delete(int? ID)
         {
             if (!ID.HasValue)

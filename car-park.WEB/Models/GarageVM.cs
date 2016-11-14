@@ -28,5 +28,9 @@ namespace car_park.WEB.Models
         [Required]
         public int Status { get; set; }
 
-    }
+        public int CarsInStock { get; set; }
+
+        public List<CarVM> CarsInGarage { get; set; }
+
+}
 }

@@ -42,13 +42,15 @@ namespace car_park.BUS
                 StatusCode = (int)HttpStatusCode.OK,
                 Data = entity
             };
-
         }
         
         public ApiResult<CarDTO> Post(CarDTO carDTO)
         {
             var entity = mapper.Map<Car>(carDTO);
             entity.Status = (int)Common.Enumaration.Status.Active;
+
+            if (!CheckGarageAvailability(entity))
+                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
 
             context.Car.Add(entity);
             context.SaveChanges();
@@ -64,11 +66,30 @@ namespace car_park.BUS
 
             if (entity == null)
                 return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotFound, Message = "Car Not Found" };
+            else if (!CheckGarageAvailability(entity))
+                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
 
             context.SaveChanges();           
 
             return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Updated" };
+        }
+
+        private bool CheckGarageAvailability(Car entity)
+        {
+            int currentCarCount = context.Car
+                .Where(c => c.GarageID == entity.GarageID && c.Status != (int)Enumaration.Status.Deleted && c.ID != entity.ID)
+                .Count();
+
+            int garageCarCapacity = context.Garage
+                .Where(g => g.ID == entity.GarageID)
+                .FirstOrDefault()
+                .MaxCar;
+
+            if (currentCarCount >= garageCarCapacity)
+                return false;
+            else
+                return true;
         }
     }
 }

@@ -15,11 +15,33 @@ namespace car_park.BUS
     {
         public ApiResult<List<GarageDTO>> Get()
         {
+            //        var entities = context.Garage
+            //.AsEnumerable()
+            //.Where(g => g.Status != (int)Enumaration.Status.Deleted)
+            //.Select(g => mapper.Map<GarageDTO>(g))
+            //.ToList();
+
+            //foreach (var item in entities)
+            //    item.CarsInStock = context.Car.Where(c => c.GarageID == item.ID && c.Status == (int)Common.Enumaration.Status.Active).Count();
+
             var entities = context.Garage
                 .AsEnumerable()
-                .Where(c => c.Status != (int)Enumaration.Status.Deleted)
-                .Select(c => mapper.Map<GarageDTO>(c))
+                .Where(g => g.Status != (int)Enumaration.Status.Deleted)
+                .ToList()
+                .Select(g => new GarageDTO
+                {
+                    Name = g.Name,
+                    Address = g.Address,
+                    Email = g.Email,
+                    ID = g.ID,
+                    MaxCar = g.MaxCar,
+                    PhoneNumber = g.PhoneNumber,
+                    Status = g.Status,
+                    CarsInStock = g.Car.Count()
+                })
                 .ToList();
+
+
 
             return new ApiResult<List<GarageDTO>>
             {
@@ -33,9 +55,25 @@ namespace car_park.BUS
         {
             var entity = context.Garage
                 .AsEnumerable()
-                .Where(c => c.ID == id && c.Status != (int)Enumaration.Status.Deleted)
-                .Select(c => mapper.Map<GarageDTO>(c))
+                .Where(g => g.ID == id && g.Status != (int)Enumaration.Status.Deleted)
+                .Select(g => new GarageDTO
+                {
+                    Name = g.Name,
+                    Address = g.Address,
+                    Email = g.Email,
+                    ID = g.ID,
+                    MaxCar = g.MaxCar,
+                    PhoneNumber = g.PhoneNumber,
+                    Status = g.Status,
+                    CarsInStock = g.Car.Count()
+                })
                 .FirstOrDefault();
+
+            entity.CarsInGarage = context.Car
+                .AsEnumerable()
+                .Where(c => c.GarageID == entity.ID && c.Status != (int)Enumaration.Status.Deleted)
+                .Select(c => mapper.Map<CarDTO>(c))
+                .ToList();
 
             return new ApiResult<GarageDTO>
             {

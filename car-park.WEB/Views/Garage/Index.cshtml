@@ -1,58 +1,38 @@
 ﻿@model IEnumerable<car_park.WEB.Models.GarageVM>
+@using GridMvc.Html
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Garage List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Garage List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Edit")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxCar)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">Garages</h4>
+    </div>
+    <div class="panel-body">
+        @Html.Grid(Model).Columns(col =>
+   {
+       col.Add(x => x.Name).Titled("Name").Filterable(true).Sortable(true);
+       col.Add(x => x.Address).Titled("Address").Filterable(true).Sortable(true);
+       col.Add(x => x.PhoneNumber).Titled("PhoneNumber").Filterable(true).Sortable(true);
+       col.Add(x => x.Email).Titled("Email").Filterable(true).Sortable(true);
+       col.Add(x => x.MaxCar).Titled("MaxCar").Filterable(true).Sortable(true);
+       col.Add(x => x.CarsInStock).Titled("CarsInStock").Filterable(true).Sortable(true);
+       col.Add().Sanitized(false).Encoded(false).RenderValueAs(x => Menu(x));
+   }).WithPaging(5)
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxCar)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.ID  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.ID  })
-        </td>
-    </tr>
+@helper Menu(car_park.WEB.Models.GarageVM vm)
+{
+    <a href="@Url.Action("Edit", "Garage", new { ID = vm.ID })">Edit</a>
+    <a href="@Url.Action("Details", "Garage", new { ID = vm.ID })">Details</a>
+    <a href="@Url.Action("Delete", "Garage", new { ID = vm.ID })">Delete</a>
 }
 
-</table>
