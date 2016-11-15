@@ -77,7 +77,7 @@ namespace car_park.API.TEST
             {
                 Name = "TEST_GARAGE_POST" + DateTime.Now.ToString(),
                 Address = "TEST_ADDRESS",
-                Status = (int)Enumaration.Status.Active,
+                Status = (int)Enumaration.Status.Deleted,
                 MaxCar = 100
             });
             Assert.IsNotNull(resultGarage);

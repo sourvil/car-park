@@ -77,6 +77,7 @@ namespace car_park.API.TEST
             carDTO.Year = DateTime.Today.Year;
             carDTO.RegistrationDate = DateTime.Today;
             carDTO.GarageID = garageID; // Default Garage
+            carDTO.Status = (int)Enumaration.Status.Deleted;
             ApiResult<CarDTO> result =  cc.Post(carDTO);
 
             Assert.IsNotNull(result);
@@ -99,6 +100,6 @@ namespace car_park.API.TEST
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Data);
             Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode);
-        }        
+        }
     }
 }

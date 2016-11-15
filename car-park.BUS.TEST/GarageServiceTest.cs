@@ -76,7 +76,7 @@ namespace car_park.BUS.TEST
             {
                 Name = "TEST_GARAGE_POST" + DateTime.Now.ToString(),
                 Address = "TEST_ADDRESS",
-                Status = (int)Enumaration.Status.Active,
+                Status = (int)Enumaration.Status.Deleted,
                 MaxCar = 0
             });
             Assert.IsNotNull(resultGarage);

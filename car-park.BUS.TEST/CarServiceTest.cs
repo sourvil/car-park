@@ -78,6 +78,7 @@ namespace car_park.BUS.TEST
             carDTO.Year = DateTime.Today.Year;
             carDTO.RegistrationDate = DateTime.Today;
             carDTO.GarageID = garageID; // Default Garage
+            carDTO.Status = (int)Enumaration.Status.Deleted;
             ApiResult<CarDTO> result =  cs.Post(carDTO);
 
             Assert.IsNotNull(result);

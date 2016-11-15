@@ -18,7 +18,7 @@ namespace car_park.Data.Model
         
         public int? ModelID { get; set; }
         [Required]
-        public int? GarageID { get; set; }
+        public int GarageID { get; set; }
 
         [Required]
         public int Year { get; set; }
