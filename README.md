@@ -10,3 +10,9 @@ NuGet Packages
 -GridMvc
 -WebApiClient
 -Entity Framework
+
+Future Packages
+-NUnit
+-NLog
+-Elmah
+-Oauth
