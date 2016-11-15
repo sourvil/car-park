@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.Contract", "car-pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.BUS", "car-park.BUS\car-park.BUS.csproj", "{E4822C19-1E91-4E34-8FC7-481606C7B2E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.BUS.TEST", "car-park.BUS.TEST\car-park.BUS.TEST.csproj", "{27A252F4-1E50-41B6-9849-97BC42082A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "car-park.API.TEST", "car-park.API.TEST\car-park.API.TEST.csproj", "{1848A635-DDC6-439F-BD59-EDC39BC7976D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{E4822C19-1E91-4E34-8FC7-481606C7B2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4822C19-1E91-4E34-8FC7-481606C7B2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4822C19-1E91-4E34-8FC7-481606C7B2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A252F4-1E50-41B6-9849-97BC42082A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A252F4-1E50-41B6-9849-97BC42082A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A252F4-1E50-41B6-9849-97BC42082A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A252F4-1E50-41B6-9849-97BC42082A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1848A635-DDC6-439F-BD59-EDC39BC7976D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1848A635-DDC6-439F-BD59-EDC39BC7976D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1848A635-DDC6-439F-BD59-EDC39BC7976D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1848A635-DDC6-439F-BD59-EDC39BC7976D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

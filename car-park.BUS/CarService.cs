@@ -49,7 +49,7 @@ namespace car_park.BUS
             var entity = mapper.Map<Car>(carDTO);
             entity.Status = (int)Common.Enumaration.Status.Active;
 
-            if (!CheckGarageAvailability(entity))
+            if (!CheckGarageAvailability(carDTO))
                 return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
 
             context.Car.Add(entity);
@@ -66,7 +66,7 @@ namespace car_park.BUS
 
             if (entity == null)
                 return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotFound, Message = "Car Not Found" };
-            else if (!CheckGarageAvailability(entity))
+            else if (!CheckGarageAvailability(carDTO))
                 return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
 
@@ -75,8 +75,10 @@ namespace car_park.BUS
             return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Updated" };
         }
 
-        private bool CheckGarageAvailability(Car entity)
+        public bool CheckGarageAvailability(CarDTO carDTO)
         {
+            var entity = mapper.Map<Car>(carDTO);
+
             int currentCarCount = context.Car
                 .Where(c => c.GarageID == entity.GarageID && c.Status != (int)Enumaration.Status.Deleted && c.ID != entity.ID)
                 .Count();

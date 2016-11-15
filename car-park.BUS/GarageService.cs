@@ -14,16 +14,7 @@ namespace car_park.BUS
     public class GarageService : BaseService, IGarage
     {
         public ApiResult<List<GarageDTO>> Get()
-        {
-            //        var entities = context.Garage
-            //.AsEnumerable()
-            //.Where(g => g.Status != (int)Enumaration.Status.Deleted)
-            //.Select(g => mapper.Map<GarageDTO>(g))
-            //.ToList();
-
-            //foreach (var item in entities)
-            //    item.CarsInStock = context.Car.Where(c => c.GarageID == item.ID && c.Status == (int)Common.Enumaration.Status.Active).Count();
-
+        {            
             var entities = context.Garage
                 .AsEnumerable()
                 .Where(g => g.Status != (int)Enumaration.Status.Deleted)

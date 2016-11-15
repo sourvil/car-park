@@ -53,6 +53,20 @@ namespace car_park.Data.Migrations
                 new Model.Model { Name = "A5", Status = (int)Enumaration.Status.Active, BrandID = context.Brand.Where(b => b.Name == "AUDI").FirstOrDefault().ID }
                 );
 
+            // Garage
+            context.Garage.AddOrUpdate(
+                g => new { g.Name, g.Address ,g.Status },
+                new Model.Garage { Name = "TEST GARAGE",Address = "ISTANBUL" ,Status = (int)Enumaration.Status.Active },
+                new Model.Garage { Name = "PILOT GARAGE", Address="BARCELONA", Status = (int)Enumaration.Status.Active }
+                );
+
+            // Car
+            context.Car.AddOrUpdate(
+                c => new { c.Name, c.Year, c.GarageID, c.RegistrationDate,c.Status },
+                new Model.Car { Name = "TEST CAR", Year = 2015,GarageID=1 ,RegistrationDate = DateTime.Today ,Status = (int)Enumaration.Status.Active },
+                new Model.Car { Name = "PILOT CAR", Year = 2016, GarageID=2, RegistrationDate = DateTime.Today, Status = (int)Enumaration.Status.Active }
+                );
+
         }
     }
 }
