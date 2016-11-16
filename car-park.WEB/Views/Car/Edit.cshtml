@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Car</h4>
         <hr />
@@ -82,3 +82,23 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    $(function (ready) {
+        $('#BrandID').change(function () {
+            var selectedBrand = $(this).val();
+            if (selectedBrand != null && selectedBrand != '') {
+                $.getJSON('@Url.Action("Models")', { id: selectedBrand }, function (getModels) {
+                    var modelsSelect = $('#ModelID');
+                    modelsSelect.empty();
+                    $.each(getModels, function (index, model) {
+                        modelsSelect.append($('<option/>', {
+                            value: model.value,
+                            text: model.text
+                        }));
+                    });
+                });
+            }
+        });
+    });
+</script>

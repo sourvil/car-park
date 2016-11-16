@@ -11,6 +11,9 @@ namespace car_park.API.TEST
     [TestClass]
     public class ModelControllerTest
     {
+        // Default ID values
+        private int brandID = 1;
+
         [TestMethod]
         public void ModelController_Get_All()
         {
@@ -21,8 +24,19 @@ namespace car_park.API.TEST
 
             Assert.IsNotNull(lstModel);
             Assert.AreEqual((int)HttpStatusCode.OK, lstModel.StatusCode);
-
-
         }
+
+        [TestMethod]
+        public void ModelController_Get_ByBrandId()
+        {
+            ModelController mc = new ModelController();
+            ApiResult<List<ModelDTO>> lstModel = new ApiResult<List<ModelDTO>>();
+
+            lstModel = mc.GetByBrandId(brandID);
+
+            Assert.IsNotNull(lstModel);
+            Assert.AreEqual((int)HttpStatusCode.OK, lstModel.StatusCode);
+        }
+
     }
 }

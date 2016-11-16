@@ -21,6 +21,17 @@ namespace car_park.BUS
                 .ToList();
 
             return Entities;
+        }
+
+        public List<ModelDTO> GetByBrandId(int BrandID)
+        {
+            var Entities = context.Model
+                .AsEnumerable()
+                .Where(c => c.BrandID == BrandID  && c.Status != (int)Enumaration.Status.Deleted)
+                .Select(c => mapper.Map<ModelDTO>(c))
+                .ToList();
+
+            return Entities;
 
         }
     }

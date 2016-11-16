@@ -23,5 +23,16 @@ namespace car_park.API.Controllers
                 Data = Entities
             };
         }
+
+        public ApiResult<List<ModelDTO>> GetByBrandId(int id)
+        {
+            var Entities = kernel.Get<IModel>().GetByBrandId(id);
+
+            return new ApiResult<List<ModelDTO>>
+            {
+                StatusCode = (int)HttpStatusCode.OK,
+                Data = Entities
+            };
+        }
     }
 }

@@ -55,7 +55,8 @@ namespace car_park.Controllers
                     carVM = mapper.Map<CarVM>(result);
                     carVM.ColorList = GetWebApiResult("api/color", new List<ColorDTO>());
                     carVM.BrandList = GetWebApiResult("api/brand", new List<BrandDTO>());
-                    carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+                    //carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+                    carVM.ModelList = GetWebApiResult("api/model/getbybrandid/" + carVM.BrandList.FirstOrDefault().ID, new List<ModelDTO>());
                     carVM.GarageList = GetWebApiResult("api/garage", new List<GarageDTO>());
                     return View(carVM);
                 }
@@ -63,7 +64,8 @@ namespace car_park.Controllers
 
             carVM.ColorList = GetWebApiResult("api/color", new List<ColorDTO>());
             carVM.BrandList = GetWebApiResult("api/brand", new List<BrandDTO>());
-            carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+            //carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+            carVM.ModelList = GetWebApiResult("api/model/getbybrandid/" + carVM.BrandList.FirstOrDefault().ID, new List<ModelDTO>());
             carVM.GarageList = GetWebApiResult("api/garage", new List<GarageDTO>());
             return View(carVM);
         }
@@ -95,7 +97,8 @@ namespace car_park.Controllers
             }
             carVM.ColorList = GetWebApiResult("api/color", new List<ColorDTO>());
             carVM.BrandList = GetWebApiResult("api/brand", new List<BrandDTO>());
-            carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+            //carVM.ModelList = GetWebApiResult("api/model", new List<ModelDTO>());
+            carVM.ModelList = GetWebApiResult("api/model/getbybrandid/" + carVM.BrandList.FirstOrDefault().ID, new List<ModelDTO>());
             carVM.GarageList = GetWebApiResult("api/garage", new List<GarageDTO>());
             return View(carVM);
         }
@@ -131,6 +134,16 @@ namespace car_park.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Models(int id)
+        {
+            var result = GetWebApiResult("api/model/getbybrandid/" + id, new List<ModelDTO>());
+
+            return Json(
+                result.Select(x => new { value = x.ID, text = x.Name }),
+                JsonRequestBehavior.AllowGet
+            );
         }
     }
 }

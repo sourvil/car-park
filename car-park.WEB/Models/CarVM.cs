@@ -12,6 +12,7 @@ namespace car_park.WEB.Models
         public CarVM()
         {
             RegistrationDate = DateTime.Today;
+            Year = DateTime.Today.Year;
         }
 
         [Required]

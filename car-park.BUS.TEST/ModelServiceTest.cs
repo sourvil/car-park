@@ -10,6 +10,9 @@ namespace car_park.BUS.TEST
     [TestClass]
     public class ModelServiceTest
     {
+        // Default ID values
+        private int brandID = 1;
+
         [TestMethod]
         public void Model_Get_All()
         {
@@ -17,6 +20,17 @@ namespace car_park.BUS.TEST
             List<ModelDTO> lstModel = new List<ModelDTO>();
 
             lstModel = bs.Get();
+
+            Assert.IsNotNull(lstModel);
+        }
+
+        [TestMethod]
+        public void Model_Get_ByBrandID()
+        {
+            ModelService bs = new ModelService();
+            List<ModelDTO> lstModel = new List<ModelDTO>();
+
+            lstModel = bs.GetByBrandId(brandID);
 
             Assert.IsNotNull(lstModel);
         }

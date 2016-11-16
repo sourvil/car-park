@@ -11,5 +11,6 @@ namespace car_park.Contract
     public interface IModel : IBase
     {
         List<ModelDTO> Get();
+        List<ModelDTO> GetByBrandId(int BrandID);
     }
 }
