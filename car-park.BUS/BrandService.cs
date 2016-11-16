@@ -12,7 +12,7 @@ namespace car_park.BUS
 {
     public class BrandService : BaseService, IBrand
     {
-        public ApiResult<List<BrandDTO>> Get()
+        public List<BrandDTO> Get()
         {
             var Entities = context.Brand
                 .AsEnumerable()
@@ -20,11 +20,9 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<BrandDTO>(c))
                 .ToList();
 
-            return new ApiResult<List<BrandDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = Entities
-            };
+            return Entities;
+
+
 
         }
     }

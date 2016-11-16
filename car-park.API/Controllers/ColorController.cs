@@ -16,7 +16,13 @@ namespace car_park.API.Controllers
     {
         public ApiResult<List<ColorDTO>> Get()
         {
-            return kernel.Get<IColor>().Get();
+            var Entities = kernel.Get<IColor>().Get();
+
+            return new ApiResult<List<ColorDTO>>
+            {
+                StatusCode = (int)HttpStatusCode.OK,
+                Data = Entities
+            };
 
         }
 

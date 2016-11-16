@@ -13,7 +13,7 @@ namespace car_park.BUS
 {
     public class CarService : BaseService, ICar
     {
-        public ApiResult<List<CarDTO>> Get()
+        public List<CarDTO> Get()
         {
             var entities = context.Car
                 .AsEnumerable()
@@ -21,15 +21,11 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<CarDTO>(c))
                 .ToList();
 
-            return new ApiResult<List<CarDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = entities
-            };
+            return entities;
 
         }
         
-        public ApiResult<CarDTO> Get(int ID)
+        public CarDTO Get(int ID)
         {
             var entity = context.Car
                 .AsEnumerable()
@@ -37,42 +33,38 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<CarDTO>(c))
                 .FirstOrDefault();
 
-            return new ApiResult<CarDTO>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = entity
-            };
+            return entity;
         }
         
-        public ApiResult<CarDTO> Post(CarDTO carDTO)
+        public CarDTO Post(CarDTO carDTO)
         {
             var entity = mapper.Map<Car>(carDTO);
             entity.Status = (int)Common.Enumaration.Status.Active;
 
             if (!CheckGarageAvailability(carDTO))
-                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
+                return null;
 
             context.Car.Add(entity);
             context.SaveChanges();
 
-            return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Inserted" };
+            return mapper.Map<CarDTO>(entity);
         }
         
-        public ApiResult<CarDTO> Put(CarDTO carDTO)
+        public CarDTO Put(CarDTO carDTO)
         {
             var entity = mapper.Map<Car>(carDTO);
 
             entity.Status = (int)Common.Enumaration.Status.Active;
 
             if (entity == null)
-                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotFound, Message = "Car Not Found" };
+                return null;
             else if (!CheckGarageAvailability(carDTO))
-                return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.NotAcceptable, Message = "Max Car on the Garage!" };
+                return new CarDTO();
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
 
             context.SaveChanges();           
 
-            return new ApiResult<CarDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<CarDTO>(entity), Message = "Car is Updated" };
+            return mapper.Map<CarDTO>(entity);
         }
 
         public bool CheckGarageAvailability(CarDTO carDTO)

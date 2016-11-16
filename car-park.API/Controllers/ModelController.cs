@@ -15,8 +15,13 @@ namespace car_park.API.Controllers
     {
         public ApiResult<List<ModelDTO>> Get()
         {
-            return kernel.Get<IModel>().Get();
+            var Entities = kernel.Get<IModel>().Get();
 
+            return new ApiResult<List<ModelDTO>>
+            {
+                StatusCode = (int)HttpStatusCode.OK,
+                Data = Entities
+            };
         }
     }
 }

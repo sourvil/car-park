@@ -14,15 +14,11 @@ namespace car_park.BUS.TEST
         public void Brand_Get_All()
         {
             BrandService bs = new BrandService();
-            ApiResult<List<BrandDTO>> lstBrand = new ApiResult<List<BrandDTO>>();
+            List<BrandDTO> lstBrand = new List<BrandDTO>();
 
             lstBrand = bs.Get();
 
             Assert.IsNotNull(lstBrand);
-
-            Assert.AreEqual((int)HttpStatusCode.OK, lstBrand.StatusCode);
-
-
         }
     }
 }

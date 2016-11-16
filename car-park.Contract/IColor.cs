@@ -10,6 +10,6 @@ namespace car_park.Contract
 {
     public interface IColor : IBase
     {
-        ApiResult<List<ColorDTO>> Get();
+        List<ColorDTO> Get();
     }
 }

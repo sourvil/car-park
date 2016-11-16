@@ -10,6 +10,6 @@ namespace car_park.Contract
 {
     public interface IBrand : IBase
     {
-        ApiResult<List<BrandDTO>> Get();
+        List<BrandDTO> Get();
     }
 }

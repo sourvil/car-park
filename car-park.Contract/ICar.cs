@@ -10,9 +10,9 @@ namespace car_park.Contract
 {
     public interface ICar : IBase
     {
-        ApiResult<List<CarDTO>> Get();
-        ApiResult<CarDTO> Get(int ID);
-        ApiResult<CarDTO> Post(CarDTO carDTO);
-        ApiResult<CarDTO> Put(CarDTO carDTO);
+        List<CarDTO> Get();
+        CarDTO Get(int ID);
+        CarDTO Post(CarDTO carDTO);
+        CarDTO Put(CarDTO carDTO);
     }
 }

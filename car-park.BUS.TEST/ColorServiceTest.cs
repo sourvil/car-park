@@ -14,12 +14,11 @@ namespace car_park.BUS.TEST
         public void Color_Get_All()
         {
             ColorService bs = new ColorService();
-            ApiResult<List<ColorDTO>> lstColor = new ApiResult<List<ColorDTO>>();
+            List<ColorDTO> lstColor = new List<ColorDTO>();
 
             lstColor = bs.Get();
 
             Assert.IsNotNull(lstColor);
-            Assert.AreEqual((int)HttpStatusCode.OK, lstColor.StatusCode);
 
 
         }

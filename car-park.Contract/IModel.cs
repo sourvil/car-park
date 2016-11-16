@@ -10,6 +10,6 @@ namespace car_park.Contract
 {
     public interface IModel : IBase
     {
-        ApiResult<List<ModelDTO>> Get();
+        List<ModelDTO> Get();
     }
 }

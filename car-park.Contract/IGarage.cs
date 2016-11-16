@@ -10,10 +10,10 @@ namespace car_park.Contract
 {
     public interface IGarage : IBase
     {
-        ApiResult<List<GarageDTO>> Get();
-        ApiResult<GarageDTO> Get(int id);
-        ApiResult<GarageDTO> Post(GarageDTO garageDTO);
-        ApiResult<GarageDTO> Put(GarageDTO garageDTO);
-        ApiResult Delete(int id);
+        List<GarageDTO> Get();
+        GarageDTO Get(int id);
+        GarageDTO Post(GarageDTO garageDTO);
+        GarageDTO Put(GarageDTO garageDTO);
+        bool Delete(int id);
     }
 }

@@ -25,12 +25,12 @@ namespace car_park.BUS.TEST
             carDTO.RegistrationDate = DateTime.Today;
             carDTO.GarageID = garageID;
             carDTO.Status = (int)Enumaration.Status.Active;
-            ApiResult<CarDTO> result = cs.Put(carDTO);
+            CarDTO result = cs.Put(carDTO);
 
 
             // Activate Default Garage if deleted
             GarageService gs = new GarageService();
-            ApiResult<GarageDTO> resultGarage = gs.Put(new GarageDTO()
+            GarageDTO resultGarage = gs.Put(new GarageDTO()
             {
                 ID = garageID, // Default Garage ID
                 Name = "TEST_GARAGE_PUT" + DateTime.Now.ToString(),
@@ -44,35 +44,33 @@ namespace car_park.BUS.TEST
         public void Garage_Get_All()
         {
             GarageService gs = new GarageService();
-            ApiResult<List<GarageDTO>> lstGarage = new ApiResult<List<GarageDTO>>();
+            List<GarageDTO> lstGarage = new List<GarageDTO>();
 
             lstGarage = gs.Get();
 
             Assert.IsNotNull(lstGarage);
-            Assert.AreEqual((int)HttpStatusCode.OK, lstGarage.StatusCode);
         }
 
         [TestMethod]
         public void Garage_Get_ById()
         {
             GarageService gs = new GarageService();
-            ApiResult<GarageDTO> garageDTO = new ApiResult<GarageDTO>();
+            GarageDTO garageDTO = new GarageDTO();
 
             // Default Car
             garageDTO = gs.Get(carID);
 
             Assert.IsNotNull(garageDTO);
-            Assert.IsNotNull(garageDTO.Data.Name);
-            Assert.IsNotNull(garageDTO.Data.Address);
-            Assert.IsNotNull(garageDTO.Data.MaxCar);
-            Assert.AreEqual((int)HttpStatusCode.OK, garageDTO.StatusCode);
+            Assert.IsNotNull(garageDTO.Name);
+            Assert.IsNotNull(garageDTO.Address);
+            Assert.IsNotNull(garageDTO.MaxCar);
         }
 
         [TestMethod]
         public void Garage_Post()
         {
             GarageService gs = new GarageService();
-            ApiResult<GarageDTO> resultGarage = gs.Post(new GarageDTO()
+            GarageDTO resultGarage = gs.Post(new GarageDTO()
             {
                 Name = "TEST_GARAGE_POST" + DateTime.Now.ToString(),
                 Address = "TEST_ADDRESS",
@@ -80,15 +78,13 @@ namespace car_park.BUS.TEST
                 MaxCar = 0
             });
             Assert.IsNotNull(resultGarage);
-            Assert.IsNotNull(resultGarage.Data);
-            Assert.AreEqual((int)HttpStatusCode.OK, resultGarage.StatusCode);
         }
 
         [TestMethod]
         public void Garage_Put()
         {
             GarageService gs = new GarageService();
-            ApiResult<GarageDTO> resultGarage = gs.Put(new GarageDTO()
+            GarageDTO resultGarage = gs.Put(new GarageDTO()
             {
                 ID = garageID, // Default Garage ID
                 Name = "TEST_GARAGE_PUT" + DateTime.Now.ToString(),
@@ -97,18 +93,15 @@ namespace car_park.BUS.TEST
                 MaxCar = 0
             });
             Assert.IsNotNull(resultGarage);
-            Assert.IsNotNull(resultGarage.Data);
-            Assert.AreEqual((int)HttpStatusCode.OK, resultGarage.StatusCode);
         }
 
         [TestMethod]
         public void Garage_Delete()
         {
             GarageService gs = new GarageService();
-            ApiResult resultGarageDeleted = gs.Delete(garageID);
+            bool resultGarageDeleted = gs.Delete(garageID);
 
-            Assert.IsNotNull(resultGarageDeleted);
-            Assert.AreEqual((int)HttpStatusCode.OK, resultGarageDeleted.StatusCode);
+            Assert.IsTrue(resultGarageDeleted);
         }
     }
 }

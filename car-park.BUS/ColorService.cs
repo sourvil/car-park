@@ -12,7 +12,7 @@ namespace car_park.BUS
 {
     public class ColorService : BaseService,IColor
     {
-        public ApiResult<List<ColorDTO>> Get()
+        public List<ColorDTO> Get()
         {
             var Entities = context.Color
                 .AsEnumerable()
@@ -20,11 +20,7 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<ColorDTO>(c))
                 .ToList();
 
-            return new ApiResult<List<ColorDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = Entities
-            };
+            return Entities;
 
         }
     }

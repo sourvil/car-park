@@ -14,14 +14,11 @@ namespace car_park.BUS.TEST
         public void Model_Get_All()
         {
             ModelService bs = new ModelService();
-            ApiResult<List<ModelDTO>> lstModel = new ApiResult<List<ModelDTO>>();
+            List<ModelDTO> lstModel = new List<ModelDTO>();
 
             lstModel = bs.Get();
 
             Assert.IsNotNull(lstModel);
-            Assert.AreEqual((int)HttpStatusCode.OK, lstModel.StatusCode);
-
-
         }
     }
 }

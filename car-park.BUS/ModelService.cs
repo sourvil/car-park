@@ -12,7 +12,7 @@ namespace car_park.BUS
 {
     public class ModelService : BaseService, IModel
     {
-        public ApiResult<List<ModelDTO>> Get()
+        public List<ModelDTO> Get()
         {
             var Entities = context.Model
                 .AsEnumerable()
@@ -20,11 +20,7 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<ModelDTO>(c))
                 .ToList();
 
-            return new ApiResult<List<ModelDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = Entities
-            };
+            return Entities;
 
         }
     }

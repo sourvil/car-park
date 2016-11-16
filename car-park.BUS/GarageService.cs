@@ -13,7 +13,7 @@ namespace car_park.BUS
 {
     public class GarageService : BaseService, IGarage
     {
-        public ApiResult<List<GarageDTO>> Get()
+        public List<GarageDTO> Get()
         {            
             var entities = context.Garage
                 .AsEnumerable()
@@ -32,17 +32,10 @@ namespace car_park.BUS
                 })
                 .ToList();
 
-
-
-            return new ApiResult<List<GarageDTO>>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = entities
-            };
-
+            return entities;
         }
         
-        public ApiResult<GarageDTO> Get(int id)
+        public GarageDTO Get(int id)
         {
             var entity = context.Garage
                 .AsEnumerable()
@@ -66,14 +59,10 @@ namespace car_park.BUS
                 .Select(c => mapper.Map<CarDTO>(c))
                 .ToList();
 
-            return new ApiResult<GarageDTO>
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Data = entity
-            };
+            return entity;
         }
         
-        public ApiResult<GarageDTO> Post(GarageDTO garageDTO)
+        public GarageDTO Post(GarageDTO garageDTO)
         {
             var entity = mapper.Map<Garage>(garageDTO);
             entity.Status = (int)Common.Enumaration.Status.Active;
@@ -81,23 +70,23 @@ namespace car_park.BUS
             context.Garage.Add(entity);
             context.SaveChanges();
 
-            return new ApiResult<GarageDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<GarageDTO>(entity), Message = "Garage is Inserted" };
+            return  mapper.Map<GarageDTO>(entity);
         }
         
-        public ApiResult<GarageDTO> Put(GarageDTO garageDTO)
+        public GarageDTO Put(GarageDTO garageDTO)
         {
             var entity = mapper.Map<Garage>(garageDTO);
             entity.Status = (int)Common.Enumaration.Status.Active;
 
             if (entity == null)
-                return new ApiResult<GarageDTO> { StatusCode = (int)HttpStatusCode.NotFound, Message = "Garage Not Found" };
+                return null;
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
 
-            return new ApiResult<GarageDTO> { StatusCode = (int)HttpStatusCode.OK, Data = mapper.Map<GarageDTO>(entity), Message = "Garage is Updated" };
+            return  mapper.Map<GarageDTO>(entity);
         }
         
-        public ApiResult Delete(int id)
+        public bool Delete(int id)
         {
             var entity = context.Garage
                 .Where(g => g.ID == id)
@@ -106,7 +95,7 @@ namespace car_park.BUS
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
 
-            return new ApiResult { StatusCode = (int)HttpStatusCode.OK, Message = "Garage is Deleted" };
+            return true;
         }
     }
 }
